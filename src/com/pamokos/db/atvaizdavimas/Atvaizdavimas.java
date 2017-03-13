@@ -65,6 +65,7 @@ public class Atvaizdavimas {
                 System.out.print("|");
             }
         } catch (Exception error) {
+            System.out.println(error);
         }
     }
 
