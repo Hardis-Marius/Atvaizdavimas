@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Scanner;
 
+import static com.sun.org.apache.xalan.internal.xsltc.compiler.sym.error;
+
 public class Atvaizdavimas {
     private Connection connection;
 
@@ -26,9 +28,9 @@ public class Atvaizdavimas {
 
     public void paklausk() {
         System.out.println("Kure lentele norite pamatyti");
-        System.out.println("Studentai");
-        System.out.println("Pazymei");
-        System.out.println("Adresiai");
+        System.out.println("Studentai  1");
+        System.out.println("Pazymei  2");
+        System.out.println("Adresiai  3");
 
     }
 
@@ -53,7 +55,7 @@ public class Atvaizdavimas {
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM `studentas`");
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 System.out.print("|");
                 System.out.print(resultSet.getInt("S_id"));
                 System.out.print("|");
@@ -62,18 +64,38 @@ public class Atvaizdavimas {
                 System.out.print(resultSet.getString("name"));
                 System.out.print("|");
                 System.out.print("|");
-                System.out.print("|");
+                System.out.println(" ");
             }
         } catch (Exception error) {
             System.out.println(error);
         }
     }
 
-    public void lentele2() {}
+    public void lentele2() {
 
-    public void lentele3() {}
+    }
 
-    {
+    public void lentele3() {
+        System.out.println("Pasirinkote Adresus");
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM `studentas_addres`");
+            while (resultSet.next()) {
+                System.out.print("  ");
+                System.out.print(resultSet.getString("country"));
+                System.out.print(" ");
+                System.out.print(resultSet.getString("city"));
+                System.out.print(" ");
+                System.out.print(resultSet.getString("street"));
+                System.out.print(" ");
+                System.out.print(resultSet.getInt("id"));
+                System.out.print(" ");
+                System.out.print(resultSet.getInt("studentas_id"));
+                System.out.println(" ");
+            }
+        } catch (Exception error) {
+            System.out.println(error);
+        }
     }
 }
 
